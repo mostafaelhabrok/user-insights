@@ -12,10 +12,6 @@ interface User {
 
 export async function GET(request: NextRequest) {
     try {
-        // const data = await fs.promises.readFile( './users.json', 'utf8');
-        // const users: User[] = JSON.parse(data);
-        // const users: User[] = require('./users.json');
-        // const path = require('path');
         const _fs = fs.promises;
 
         const filePath = path.resolve(process.cwd(), 'users.json');
@@ -45,10 +41,6 @@ export async function GET(request: NextRequest) {
 
         return NextResponse.json({agg,users:filteredUsers});
     } catch (error) {
-        // console.log(error);
         return NextResponse.json({ error: error }, { status: 400 });
-        // return NextResponse.error();
-
-        
     }
 }

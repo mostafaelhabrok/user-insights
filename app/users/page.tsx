@@ -2,7 +2,6 @@
 
 import React, { Suspense, useState } from 'react'
 import UserTable from './UserTable'
-import Link from 'next/link';
 import FilterForm from './FilterForm';
 
 interface Props {

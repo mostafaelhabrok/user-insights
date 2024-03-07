@@ -2,7 +2,6 @@ import { sort } from 'fast-sort';
 import Link from 'next/link';
 import React from 'react'
 import schema from "./schema";
-// import { useRouter } from 'next/navigation ';
 import UsersError from './UsersError';
 
 interface User {
@@ -31,8 +30,7 @@ let currentOrder ={
 
 const UserTable = async (props: Props) => {
 
-  // const router = useRouter();
-  // router.push('/error');
+
   const queryString = `?name=${props.name}&age=${props.age}&activeStatus=${props.activeStatus}`;
 
   const validation = schema.safeParse(props);
@@ -42,7 +40,7 @@ const UserTable = async (props: Props) => {
     process.env.BASE_URL + '/api/users' + queryString
     ,{cache:'no-store'}
   );
-  // let users: User[] = await res.json();
+
   let obj = await res.json();
   let users: User[] = obj.users;
   const agg = obj.agg;
