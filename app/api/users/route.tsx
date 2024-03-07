@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
-import ParamsError from '@/app/users/UsersError';
+import path from 'path';
 
 interface User {
     id: number,
@@ -12,7 +12,14 @@ interface User {
 
 export async function GET(request: NextRequest) {
     try {
-        const data = await fs.promises.readFile( './users.json', 'utf8');
+        // const data = await fs.promises.readFile( './users.json', 'utf8');
+        // const users: User[] = JSON.parse(data);
+        // const users: User[] = require('./users.json');
+        // const path = require('path');
+        const _fs = fs.promises;
+
+        const filePath = path.resolve(process.cwd(), 'users.json');
+        const data = await _fs.readFile(filePath, 'utf8');
         const users: User[] = JSON.parse(data);
 
         const params = request.nextUrl.searchParams;
