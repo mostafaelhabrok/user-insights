@@ -12,7 +12,7 @@ interface User {
 
 export async function GET(request: NextRequest) {
     try {
-        const data = await fs.promises.readFile('users.json', 'utf8');
+        const data = await fs.promises.readFile( './users.json', 'utf8');
         const users: User[] = JSON.parse(data);
 
         const params = request.nextUrl.searchParams;
