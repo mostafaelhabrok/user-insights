@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# User Data Service
+
+This is a small backend service that provides insights into user data.
 
 ## Getting Started
 
-First, run the development server:
+To get started, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **Clone the repository:**
+
+```
+git clone https://github.com/yourusername/user-insights.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd user-insights
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Start the service:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+The service will start running at http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Endpoint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Filter Users
+You can filter users based on specific criteria by sending a GET request to the /api/users endpoint with the following query parameters:
 
-## Deploy on Vercel
+name: Search for users by name (case insensitive).
+age: Filter users by age.
+activeStatus: Filter users by active status (1 for active, 2 for inactive).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Example usage:
+GET /api/users?name=John&age=30&activeStatus=1
+This will return a filtered list of users matching the specified criteria.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Data Aggregation
+The service also provides data aggregation functionalities:
+Average age of users.
+Count of active and inactive users.
+
+### Sort Users
+Users can be sorted by their last login date.
